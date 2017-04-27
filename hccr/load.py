@@ -55,10 +55,10 @@ def mnist_with_valid_set():
 
     return trX, vaX, teX, trY, vaY, teY
 
-def load(data_dir , image_file_name , label_file_name , code_file_name ,train_val_test_rate = [0.8 , 0.1 , 0.1]):
+def load(data_dir , image_file_name , code_file_name ,train_val_test_rate = [0.8 , 0.1 , 0.1]):
 
     X = np.load(os.path.join(data_dir , image_file_name)) #100*1000*28*28
-    Y = np.load(os.path.join(data_dir , label_file_name)) #100*1000
+    #Y = np.load(os.path.join(data_dir , label_file_name)) #100*1000
     C = delete_all_zero_columns(np.load(os.path.join(data_dir , code_file_name))) #100*1000*code_len
 
     assert np.shape(X)[1] == np.shape(Y)[1] == np.shape(C)[1]
@@ -69,8 +69,6 @@ def load(data_dir , image_file_name , label_file_name , code_file_name ,train_va
 
     train_X = X[:,0:train_num,:]
     train_Y = C[:,0:train_num,:]
-
-    val_X = X[: , train_num:train_num+val_num , :]
     val_Y = C[: , train_num:train_num+val_num , :]
 
     test_X = X[:,train_num+val_num: , :]

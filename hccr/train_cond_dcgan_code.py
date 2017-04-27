@@ -26,7 +26,7 @@ import load
 
 
 #read data
-trX, vaX, teX, trY, vaY, teY ,code_len = load.load('../data', 'image_100x1000x28x28.npy' ,'label_100x1000.npy' , 'code_100x1000x123.npy')
+trX, vaX, teX, trY, vaY, teY ,code_len = load.load('/home/danyang/mfs/data/dcgan_hccr', 'image_100x1000x28x28.npy' ,'label_100x1000.npy' , 'code_100x1000x123.npy')
 
 
 k = 1             # # of discrim updates for each gen update
@@ -70,7 +70,7 @@ def inverse_transform(X):
 
 desc = 'cond_dcgan'
 model_dir = 'models/%s'%desc
-samples_dir = 'samples/%s'%desc
+samples_dir = '/tmp/danyang/samples/%s'%desc
 if not os.path.exists('logs/'):
     os.makedirs('logs/')
 if not os.path.exists(model_dir):
